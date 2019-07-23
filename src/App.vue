@@ -2,37 +2,48 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>Atom</span>
+        <span class="font-weight-light">Lab</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
+      <v-btn flat href="http://valdis.club/" target="_blank">
+        <span class="mr-2">Home</span>
       </v-btn>
     </v-toolbar>
 
     <v-content>
-      <HelloWorld/>
+      <v-container grid-list-md text-xs-center>
+        <v-layout row wrap>
+          <v-flex xs3>
+            <v-card color="secondary">
+              <ControlPanel />
+            </v-card>
+          </v-flex>
+          <v-flex xs9>
+            <v-card color="primary">
+              <DisplayPanel />
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import ControlPanel from "./components/ControlPanel";
+import DisplayPanel from "./components/DisplayPanel";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    ControlPanel,
+    DisplayPanel
   },
-  data () {
+  data() {
     return {
       //
-    }
+    };
   }
-}
+};
 </script>
