@@ -1,16 +1,23 @@
 <template>
   <v-container>
     <v-layout>
-      <canvas id="canvas"></canvas>
+      <v-flex>
+        <canvas id="canvas"></canvas>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import THREE from "three";
+import * as THREE from "three";
 import OrbitControls from "three-orbitcontrols";
 
 export default {
+  name: "DisplayPanel",
+  props: {
+    displayWidth: Number,
+    displayHeight: Number
+  },
   data() {
     return {
       canvasDOM: null,
@@ -21,12 +28,12 @@ export default {
       controls: null
     };
   },
-
   methods: {
     init: function() {
+      console.log("init");
       this.canvasDOM = document.getElementById("canvas");
-      this.canvasDOM.setAttribute("width", 300);
-      this.canvasDOM.setAttribute("height", 300);
+      this.canvasDOM.setAttribute("width", 600);
+      this.canvasDOM.setAttribute("height", 600);
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color(0xffffff);
       this.camera = new THREE.PerspectiveCamera(
@@ -49,16 +56,14 @@ export default {
       this.controls = new OrbitControls(this.camera, this.canvasDOM);
 
       this.helper = new THREE.AxesHelper(20, 20, 20);
-      this.scene.add(helper);
+      this.scene.add(this.helper);
     },
     animate: function() {
       requestAnimationFrame(this.animate);
       this.renderer.render(this.scene, this.camera);
     }
   },
-  mounted() {},
-  updated() {
-    console.log(this.canvasDOM);
+  mounted() {
     this.init();
     this.animate();
   }
