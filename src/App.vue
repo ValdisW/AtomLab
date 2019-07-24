@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar app>
+    <v-toolbar app dense>
       <v-toolbar-title class="headline text-uppercase">
         <span>Atom</span>
         <span class="font-weight-light">Lab</span>
@@ -15,14 +15,12 @@
       <v-container grid-list-md text-xs-center>
         <v-layout row wrap>
           <v-flex xs3>
-            <v-card color="secondary">
+            <v-card color="white">
               <ControlPanel />
             </v-card>
           </v-flex>
           <v-flex xs9>
-            <v-card color="primary">
-              <DisplayPanel />
-            </v-card>
+            <DisplayPanel />
           </v-flex>
         </v-layout>
       </v-container>

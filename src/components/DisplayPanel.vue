@@ -1,11 +1,7 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex>
-        <canvas id="canvas"></canvas>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-layout>
+    <canvas id="canvas"></canvas>
+  </v-layout>
 </template>
 
 <script>
@@ -32,8 +28,12 @@ export default {
     init: function() {
       console.log("init");
       this.canvasDOM = document.getElementById("canvas");
-      this.canvasDOM.setAttribute("width", 600);
+      this.canvasDOM.setAttribute(
+        "width",
+        this.canvasDOM.parentNode.clientWidth
+      );
       this.canvasDOM.setAttribute("height", 600);
+      console.log();
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color(0xffffff);
       this.camera = new THREE.PerspectiveCamera(
@@ -55,7 +55,7 @@ export default {
 
       this.controls = new OrbitControls(this.camera, this.canvasDOM);
 
-      this.helper = new THREE.AxesHelper(20, 20, 20);
+      this.helper = new THREE.AxesHelper(1, 1, 1);
       this.scene.add(this.helper);
     },
     animate: function() {
@@ -71,4 +71,9 @@ export default {
 </script>
 
 <style scoped>
+canvas {
+  border-radius: 2px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
 </style>
